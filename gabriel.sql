@@ -1,6 +1,7 @@
 DROP TABLE PertenceDD;
-DROP TABLE Turma;
 DROP TABLE Sala;
+DROP TABLE Turma;
+
 
 CREATE TABLE PertenceDD(
 	sigla_departamento character varying(100),
