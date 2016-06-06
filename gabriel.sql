@@ -17,7 +17,7 @@ CREATE TABLE PertenceDD(
  	codigo_disciplina character varying(10),
  	codigo_docente integer,
  	CONSTRAINT turma_codigo_disciplina foreign key (codigo_disciplina) references Disciplina(Codigo),
- 	CONSTRAINT turma_codigo_docente foreign key (codigo_docente) references Docente(Codigo),
+ 	CONSTRAINT turma_codigo_docente foreign key (codigo_docente) references Docente(CodDocente),
  	CONSTRAINT turma_pk primary key (codigo_disciplina, id_turma)
  );
 
@@ -43,21 +43,21 @@ INSERT INTO Turma VALUES(
 	'A',--id_turma
 	30,--vagas
 	'08806',--cod_disciplina
-	--cod_docente
+	5286001623--cod_docente
 );
 
 INSERT INTO Turma VALUES(
 	'B',--id_turma
 	25,--vagas
 	'08806',--cod_disciplina
-	--cod_docente
+	5286001623--cod_docente
 );
 
 INSERT INTO Turma VALUES(
 	'A',--id_turma
 	60,--vagas
 	'562312',--cod_disciplina
-	--cod_docente
+	0058962587--cod_docente
 );
 
 INSERT INTO Sala VALUES(
