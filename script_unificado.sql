@@ -452,9 +452,10 @@ create table pessoa_contato(
 CREATE TABLE Enade (
 	Realizacao DATE DEFAULT SYSDATE CONSTRAINT Enade_PK primary key,
 	Nota       NUMBER(2,2),
-	Cod_Curso  INTEGER,
-	CONSTRAINT Enade_FK_Estudante  Foreign key (RA)        references Estudante (RA),
-	CONSTRAINT Enade_FK_Curso      Foreign key (Cod_Curso) references Curso     (codigo),
+	Estudante_RA INTEGER,
+	Curso_codigo  INTEGER,
+	CONSTRAINT Enade_Estudante_fk Foreign key (Estudante_RA) references Estudante (RA),
+	CONSTRAINT Enade_Curso_fk Foreign key (Curso_codigo) references Curso (codigo)
 );
 
 -------------------
