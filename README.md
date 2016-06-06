@@ -5,8 +5,8 @@
 	[nome].sql
 
 ###### Arquivos Separados:
-	**Script de criação**: [nome]_CREATE.sql <br>
-	**Script de inserção**: [nome]_INSERT.sql
+	[nome]_CREATE.sql
+	[nome]_INSERT.sql
 
 ## Contribuições:
 **Gabriel Martins** (gabriel.sql) <br>
