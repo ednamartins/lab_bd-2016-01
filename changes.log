@@ -57,10 +57,12 @@ data			SUBSTITUÍDO POR		periodo				EM	Tomas.PossuiRCF
 data			SUBSTITUÍDO POR		periodo				EM	Tomas.Inscreve
 id_turma		SUBSTITUÍDO POR		Turma_id			EM	Tomas.Inscreve
 ra			SUBSTITUÍDO POR		Estudante_ra			EM	Tomas.Inscreve
+codigo			SUBSTITUIDO POR		Disciplina_codigo		EM 	Lucas.DisciplinaPreReq
 
 origem_estado		ADICIONADO EM		Edna.Pessoa
 Curso_codigo		ADICIONADO EM		Alexandre.ProjetoPoliticoPedagogico
 Estudante_ra		ADICIONADO EM		Ilgner.Enade
 Curso_codigo		ADICIONADO EM		Ilgner.Enade
 Empresa_cnpj		ADICIONADO EM		Arthur.Estagia
+Calendario_data_inicio	ADICIONADO EM		Thalles.Atividade
 

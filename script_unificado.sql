@@ -153,11 +153,12 @@ CREATE TABLE Pessoa
 );
 
 -- NUCLEO DOCENTE
-CREATE TABLE NucleoDocente 
-(
-	codigo integer,
+CREATE TABLE NucleoDocente
+(  
+	Presidente character varying(20),
+	codigo integer not null,
 
-	CONSTRAINT Nucleo_Docente_pk PRIMARY KEY (codigo)
+	CONSTRAINT NucleoDocente_pk PRIMARY KEY (codigo) 
 );
 
 -- ESTUDANTE
@@ -427,6 +428,19 @@ CREATE TABLE Pessoa_Telefone
  	constraint  contato_pk PRIMARY KEY (Pessoa_rg, ddd, numero, ramal, tipo)
 );
 
+-- ATA
+CREATE TABLE Ata
+( 
+	documentos character varying(20), 
+	ConselhoCurso_id integer not null,
+	Reuniao_numero integer not null,
+	data_termino date default 'now()',
+	
+
+	CONSTRAINT Ata_ConselhoCurso_fk FOREIGN KEY (ConselhoCurso_id) REFERENCES ConselhoCurso (id),
+	CONSTRAINT Ata_Reuniao_fk FOREIGN KEY (Reuniao_numero) REFERENCES Reuniao (numero),
+	CONSTRAINT Ata_pk PRIMARY KEY(ConselhoCurso_id, Reuniao_numero)
+);
 
 
 
@@ -467,7 +481,7 @@ CREATE TABLE PertenceDD
 	CONSTRAINT PertenceDD_Departamento_fk foreign key (Departamento_sigla) references Departamento (sigla),
 	CONSTRAINT PertenceDD_Disciplina_fk foreign key (Disciplina_codigo) references Disciplina (codigo),
 	CONSTRAINT PertenceDD_pk PRIMARY KEY (Departamento_sigla, Disciplina_codigo)
- );
+);
 
 -- Pertence (Docente x NucleoDocente)
 CREATE TABLE PertenceDND
@@ -531,7 +545,8 @@ CREATE TABLE Compoe
 );
 
 -- Cursa (Estudante x Turma)
-CREATE TABLE Cursa(
+CREATE TABLE Cursa
+(
 	Estudante_ra integer not null,
 	Turma_id char NOT NULL,
 	semestre integer,
