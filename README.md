@@ -29,8 +29,8 @@
 **Rafael Kiyoto** (kiyoto.sql)<br>
 &nbsp;&nbsp;&nbsp;&nbsp; Estudante<br>
 &nbsp;&nbsp;&nbsp;&nbsp; PoloDistancia<br>
-&nbsp;&nbsp;&nbsp;&nbsp; FotoPolo<br>
-&nbsp;&nbsp;&nbsp;&nbsp; TelefonePolo<br>
+&nbsp;&nbsp;&nbsp;&nbsp; PoloDistancia_Foto<br>
+&nbsp;&nbsp;&nbsp;&nbsp; PoloDistancia_Telefone<br>
 &nbsp;&nbsp;&nbsp;&nbsp; Disciplina<br>
 	
 **Lucas Callegari** (lucas.sql)<br>
@@ -53,6 +53,34 @@
 
 **Arthur Munhoz** (arthur.sql)<br>
 &nbsp;&nbsp;&nbsp;&nbsp; Curso<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Turma<br>
 &nbsp;&nbsp;&nbsp;&nbsp; Empresa<br>
 &nbsp;&nbsp;&nbsp;&nbsp; Estagia<br>
+
+**Alexandre Seleghim** (alexandre.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ProjetoPoliticoPedagogico<br>
+
+**Edna Martins** (edna.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pessoa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pessoa_Endereco<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pessoa_Telefone<br>
+
+**Ilgner Vieira** (ilgner.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Enade<br>
+
+**Guilherme Toshimitsu** (guilherme.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ReconhecimentoDeCurso<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Visita<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Fase<br>
+
+**Osires Bideu** (osires_CREATE.sql // osires_INSERT.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Docente<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TecAdm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PertenceDND<br>
+
+**Luciano Francisco** (luciano.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ConselhoCurso<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PertenceCCP<br>
+
+**Jéssica Gama** (jessicaGama.sql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NucleoDocente<br>

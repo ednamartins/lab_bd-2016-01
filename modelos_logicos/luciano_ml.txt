@@ -1,0 +1,2 @@
+Conselho_Curso (pk(cod),representante)
+pertenceCCP (pk(Pessoa_Pertence_FK(rg),CS_Pertence_FK (cod)),data)

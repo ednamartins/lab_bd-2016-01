@@ -12,24 +12,26 @@ DROP TABLE Reuniao;
 --   		CONNECTION LIMIT = -1;
 
 -- reunião
-CREATE TABLE Reuniao (
-	numero INTEGER NOT NULL UNIQUE,
-	pauta TEXT,
-	data_inicio DATE,
+CREATE TABLE Reuniao 
+(
+	numero integer not null unique,
+	pauta text,
+	data_inicio date,
 
 	CONSTRAINT Reuniao_pk PRIMARY KEY (numero)
 );
 
 -- calendários
-CREATE TABLE Calendario (
-	data_inicio DATE NOT NULL,
-	data_fim DATE,
-	dias_letivos INTEGER NOT NULL,
-	tipo CHAR NOT NULL, -- atributo discriminatório Graduação Presencial (p), EaD (e) ou Administrativo (a)
-	aprovado BOOLEAN DEFAULT FALSE,
-	reuniao_numero INTEGER,
-	anterior_data DATE,	-- data de início do calendário anterior ao referente
-	anterior_tipo CHAR, -- tipo do calendário anterior ao referente
+CREATE TABLE Calendario 
+(
+	data_inicio date not null,
+	data_fim date,
+	dias_letivos integer not null,
+	tipo char not null, -- atributo discriminatório Graduação Presencial (p), EaD (e) ou Administrativo (a)
+	aprovado boolean default false,
+	reuniao_numero integer,
+	anterior_data date,	-- data de início do calendário anterior ao referente
+	anterior_tipo char, -- tipo do calendário anterior ao referente
 
 	CONSTRAINT Calendario_Reuniao_fk FOREIGN KEY (reuniao_numero) REFERENCES Reuniao(numero)
 		ON DELETE RESTRICT,
@@ -37,13 +39,14 @@ CREATE TABLE Calendario (
 );
 
 -- eventos -> dependem de calendário
-CREATE TABLE Evento (
-	id_evento SERIAL NOT NULL UNIQUE,
-	data_inicio DATE NOT NULL,
-	data_fim DATE,
-	descricao TEXT,
-	calendario_data DATE NOT NULL, -- data de início do calendario ao qual o evento pertence
-	calendario_tipo CHAR NOT NULL, -- tipo do calendario ao qual o eento pertence
+CREATE TABLE Evento 
+(
+	id_evento serial not null unique,
+	data_inicio date not null,
+	data_fim date,
+	descricao text,
+	calendario_data date not null, -- data de início do calendario ao qual o evento pertence
+	calendario_tipo char, -- tipo do calendario ao qual o eento pertence
 
 	CONSTRAINT Evento_Calendario_fk FOREIGN KEY (calendario_data, calendario_tipo) REFERENCES Calendario(data_inicio, tipo)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -54,13 +57,14 @@ CREATE TABLE Evento (
 ALTER TABLE Calendario ADD FOREIGN KEY (anterior_data, anterior_tipo) REFERENCES Calendario(data_inicio, tipo);
 
 -- trigger para calcular data_fim
-CREATE FUNCTION calcula_data_fim_proc() RETURNS trigger AS '
+CREATE OR REPLACE FUNCTION calcula_data_fim_proc() RETURNS trigger
+AS $$
 BEGIN 
-	NEW.data_fim = NEW.data_inicio + INTERVAL ''1'' DAY * NEW.dias_letivos;
+	NEW.data_fim = NEW.data_inicio + INTERVAL '1' DAY * NEW.dias_letivos;
 	RETURN NEW;
 END;
-' LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
 
 CREATE TRIGGER calcula_data_fim_trigger BEFORE INSERT OR UPDATE
-	ON Calendario FOR EACH ROW
-	EXECUTE PROCEDURE calcula_data_fim_proc ();
+ON Calendario FOR EACH ROW
+EXECUTE PROCEDURE calcula_data_fim_proc ();
