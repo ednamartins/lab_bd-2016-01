@@ -30,4 +30,34 @@ CREATE TABLE Realiza_CC_Re(
 	CONSTRAINT Cursa_PK PRIMARY KEY (RA,Id_Turma) 
  );
 
+--Inserção na tabelas Realiza_CC_Re
+insert into Realiza_CC_Re(ID_conselho,Codigo_Reuniao)
+values (1, 'abc')
 
+insert into Realiza_CC_Re(ID_conselho,Codigo_Reuniao)
+values (2, 'abcd')
+
+insert into Realiza_CC_Re(ID_conselho,Codigo_Reuniao)
+values (3, 'abcde')
+
+insert into Realiza_CC_Re(ID_conselho,Codigo_Reuniao)
+values (4, 'abcdef')
+
+insert into Realiza_CC_Re(ID_conselho,Codigo_Reuniao)
+values (5, 'abcdefg')
+
+--Inserção na tabelas Cursa
+insert into Cursa(RA,Id_Turma,Semestre,Media,Frenquencia,Status)
+values (551910,1,3,5.9,10,'P')
+
+insert into Cursa(RA,Id_Turma,Semestre,Media,Frenquencia,Status)
+values (551911,2,7,2.7,6,'A')
+
+insert into Cursa(RA,Id_Turma,Semestre,Media,Frenquencia,Status)
+values (551912,3,5,3.9,7,'A')
+
+insert into Cursa(RA,Id_Turma,Semestre,Media,Frenquencia,Status)
+values (551913,4,1,9.9,1,'P')
+
+insert into Cursa(RA,Id_Turma,Semestre,Media,Frenquencia,Status)
+values (551914,5,2,7.9,11,'P')
