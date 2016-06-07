@@ -58,6 +58,9 @@ data			SUBSTITUÍDO POR		periodo				EM	Tomas.Inscreve
 id_turma		SUBSTITUÍDO POR		Turma_id			EM	Tomas.Inscreve
 ra			SUBSTITUÍDO POR		Estudante_ra			EM	Tomas.Inscreve
 codigo			SUBSTITUIDO POR		Disciplina_codigo		EM 	Lucas.DisciplinaPreReq
+id			SUBSTITUÍDO POR		codigo				EM 	JessicaGama.NucleoDocente
+id_CC			SUBSTITUÍDO POR		ConselhoCurso_id		EM	JessicaGama.Ata
+id_reuniao		SUBSTITUÍDO POR		Reuniao_id			EM	JessicaGama.Ata
 
 origem_estado		ADICIONADO EM		Edna.Pessoa
 Curso_codigo		ADICIONADO EM		Alexandre.ProjetoPoliticoPedagogico
@@ -65,4 +68,6 @@ Estudante_ra		ADICIONADO EM		Ilgner.Enade
 Curso_codigo		ADICIONADO EM		Ilgner.Enade
 Empresa_cnpj		ADICIONADO EM		Arthur.Estagia
 Calendario_data_inicio	ADICIONADO EM		Thalles.Atividade
+data_termino		ADICIONADO EM		JessicaGama.Ata
 
+Data_Termino		REMOVIDA DE		JessicaGama
