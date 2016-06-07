@@ -29,7 +29,7 @@ CREATE TYPE supervisor AS (
 
 
 CREATE TABLE Curso(
-    codigo char(10) constraint curso_pk primary key,
+    codigo INTEGER constraint curso_pk primary key,
     website char(40),
     nome char(40),
     coordenador coord 
@@ -66,4 +66,4 @@ INSERT INTO empresa VALUES(2566856, Samsung, ROW(“Rua da Pamonha”, “Sem co
 
 INSERT INTO turma VALUES(0258, ‘{212, 235}’, 120);
 
-INSERT INTO curso VALUES("0212", “www.dc.ufscar.br”, “Ciência da Computação”, ROW(“Joao Silva”, ROW(“Sala”, “Fixo”, 05, 16, 34521443)));
+INSERT INTO curso VALUES(0212, “www.dc.ufscar.br”, “Ciência da Computação”, ROW(“Joao Silva”, ROW(“Sala”, “Fixo”, 05, 16, 34521443)));
