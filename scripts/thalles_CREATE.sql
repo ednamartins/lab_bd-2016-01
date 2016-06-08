@@ -3,14 +3,36 @@ DROP TABLE Atividade;
 DROP TABLE Compoe;
 DROP TABLE Efetua;
 DROP TABLE Matriculado;
+/*DROP TABLE Curso;
+DROP TABLE Disciplina;
+DROP TABLE Estudante;
+DROP TABLE NucleoDocente;
+DROP TABLE Reuniao;
+DROP TABLE Calendario;*/
 
---CREATE DATABASE "Prograd"
---  WITH OWNER = postgres
---       ENCODING = 'UTF8'
---       TABLESPACE = pg_default
---       LC_COLLATE = 'Portuguese_Brazil.1252'
---       LC_CTYPE = 'Portuguese_Brazil.1252'
---       CONNECTION LIMIT = -1;
+
+CREATE DATABASE "Prograd"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+CREATE TYPE telefone AS 
+(
+    origem character varying(20),
+    tipo character varying(20),
+    ramal integer,
+    ddd integer,
+    fone bigint 
+);
+
+CREATE TYPE coord AS 
+(
+    nome character varying(40),
+    telefone telefone
+);
 
 --------------------------------------
 -- Tabelas feitas por Thalles Ferreira
@@ -122,5 +144,21 @@ CREATE TABLE Reuniao
     data_inicio date,
 
     CONSTRAINT Reuniao_pk PRIMARY KEY (numero)
+);
+
+CREATE TABLE Calendario 
+(
+    data_inicio date not null,
+    data_fim date,
+    dias_letivos integer not null,
+    tipo char not null, -- atributo discriminatório Graduação Presencial (p), EaD (e) ou Administrativo (a)
+    aprovado boolean default false,
+    reuniao_numero integer,
+    anterior_data date, -- data de início do calendário anterior ao referente
+    anterior_tipo char, -- tipo do calendário anterior ao referente
+
+    CONSTRAINT Calendario_Reuniao_fk FOREIGN KEY (reuniao_numero) REFERENCES Reuniao(numero)
+        ON DELETE RESTRICT,
+    CONSTRAINT Calendario_pk PRIMARY KEY (data_inicio, tipo)
 );
 */
