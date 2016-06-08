@@ -3,13 +3,14 @@ DROP TABLE Atividade;
 DROP TABLE Compoe;
 DROP TABLE Efetua;
 DROP TABLE Matriculado;
-/*DROP TABLE Curso;
+/*
+DROP TABLE Curso;
 DROP TABLE Disciplina;
 DROP TABLE Estudante;
 DROP TABLE NucleoDocente;
 DROP TABLE Reuniao;
-DROP TABLE Calendario;*/
-
+DROP TABLE Calendario;
+*/
 
 CREATE DATABASE "Prograd"
   WITH OWNER = postgres
@@ -32,64 +33,6 @@ CREATE TYPE coord AS
 (
     nome character varying(40),
     telefone telefone
-);
-
---------------------------------------
--- Tabelas feitas por Thalles Ferreira
---------------------------------------
-
--- ATIVIDADE
-CREATE TABLE Atividade
-(
-    data_inicio date not null,
-    data_fim date,
-    atributo char, -- atributo descriminatório sobre tipo de atividade
-    Calendario_data_inicio date not null,
-    Calendario_tipo char not null default 'a',
-
-    CONSTRAINT Atividade_Calendario_FK FOREIGN KEY (Calendario_data_inicio, Calendario_tipo) REFERENCES Calendario (data_inicio, tipo),
-    CONSTRAINT Atividade_PK PRIMARY KEY (data_inicio)
-);
-
--- Compoe (Disciplina x Curso)
-CREATE TABLE Compoe
-(
-    Disciplina_codigo character varying(10),
-    Curso_codigo integer,
-    obrigatoriedade boolean,
-    perfil char, -- atributo descriminatório sobre perfil
-
-    CONSTRAINT Compoe_Disciplina_fk FOREIGN KEY (Disciplina_codigo) REFERENCES Disciplina (codigo),
-    CONSTRAINT Compoe_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
-    CONSTRAINT Compoe_pk PRIMARY KEY (Disciplina_codigo, Curso_codigo)
-);
-
--- Efetua (NucleoDocente x Reuniao)
-CREATE TABLE Efetua
-(
-    NucleoDocente_codigo integer,
-    Reuniao_numero integer,
-
-    CONSTRAINT Efetua_NucleoDocente_fk FOREIGN KEY (NucleoDocente_codigo) REFERENCES NucleoDocente (codigo),
-    CONSTRAINT Efetua_Reuniao_fk FOREIGN KEY (Reuniao_numero) REFERENCES Reuniao (numero),
-    CONSTRAINT Efetua_pk PRIMARY KEY (NucleoDocente_codigo, Reuniao_numero)
-);
-
--- Matriculado (Estudante x Curso)
-CREATE TABLE Matriculado
-(
-    Estudante_ra integer not null,
-    Curso_codigo integer not null,
-    grade character varying(15), 
-    periodo char, -- atributo descriminatório sobre periodo
-    status boolean,
-    perfil char, -- atributo descriminatório sobre perfil
-    ano_ingresso date,
-    ano_termino date,
-
-    CONSTRAINT Matriculado_Estudante_fk FOREIGN KEY (Estudante_ra) REFERENCES Estudante (ra),
-    CONSTRAINT Matriculado_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
-    CONSTRAINT Matriculado_pk PRIMARY KEY (Estudante_ra, Curso_codigo)
 );
 
 -----------------------------------------
@@ -162,3 +105,61 @@ CREATE TABLE Calendario
     CONSTRAINT Calendario_pk PRIMARY KEY (data_inicio, tipo)
 );
 */
+
+--------------------------------------
+-- Tabelas feitas por Thalles Ferreira
+--------------------------------------
+
+-- ATIVIDADE
+CREATE TABLE Atividade
+(
+    data_inicio date not null,
+    data_fim date,
+    atributo char, -- atributo descriminatório sobre tipo de atividade
+    Calendario_data_inicio date not null,
+    Calendario_tipo char not null default 'a',
+
+    CONSTRAINT Atividade_Calendario_FK FOREIGN KEY (Calendario_data_inicio, Calendario_tipo) REFERENCES Calendario (data_inicio, tipo),
+    CONSTRAINT Atividade_PK PRIMARY KEY (data_inicio)
+);
+
+-- Compoe (Disciplina x Curso)
+CREATE TABLE Compoe
+(
+    Disciplina_codigo character varying(10),
+    Curso_codigo integer,
+    obrigatoriedade boolean,
+    perfil char, -- atributo descriminatório sobre perfil
+
+    CONSTRAINT Compoe_Disciplina_fk FOREIGN KEY (Disciplina_codigo) REFERENCES Disciplina (codigo),
+    CONSTRAINT Compoe_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
+    CONSTRAINT Compoe_pk PRIMARY KEY (Disciplina_codigo, Curso_codigo)
+);
+
+-- Efetua (NucleoDocente x Reuniao)
+CREATE TABLE Efetua
+(
+    NucleoDocente_codigo integer,
+    Reuniao_numero integer,
+
+    CONSTRAINT Efetua_NucleoDocente_fk FOREIGN KEY (NucleoDocente_codigo) REFERENCES NucleoDocente (codigo),
+    CONSTRAINT Efetua_Reuniao_fk FOREIGN KEY (Reuniao_numero) REFERENCES Reuniao (numero),
+    CONSTRAINT Efetua_pk PRIMARY KEY (NucleoDocente_codigo, Reuniao_numero)
+);
+
+-- Matriculado (Estudante x Curso)
+CREATE TABLE Matriculado
+(
+    Estudante_ra integer not null,
+    Curso_codigo integer not null,
+    grade character varying(15), 
+    periodo char, -- atributo descriminatório sobre periodo
+    status boolean,
+    perfil char, -- atributo descriminatório sobre perfil
+    ano_ingresso date,
+    ano_termino date,
+
+    CONSTRAINT Matriculado_Estudante_fk FOREIGN KEY (Estudante_ra) REFERENCES Estudante (ra),
+    CONSTRAINT Matriculado_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
+    CONSTRAINT Matriculado_pk PRIMARY KEY (Estudante_ra, Curso_codigo)
+);
