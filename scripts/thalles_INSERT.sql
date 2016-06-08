@@ -188,6 +188,64 @@ INSERT INTO Reuniao VALUES(
 );
 ------------------------------------------------------------------------------------------------
 
+-- Calendario
+INSERT INTO Calendario VALUES(
+    '2014-01-01', -- data inicio calendario
+    '2014-12-31', -- data fim calendario
+    365, -- dias letivos
+    'p', -- tipo graduacao presencial, ead, administrativo
+    true, -- aprovado
+    1, -- numero reuniao
+    '2014-01-01', -- data inicio calendario anterior
+    'a' -- tipo  calendario
+);
+
+INSERT INTO Calendario VALUES(
+    '2013-01-01', -- data inicio calendario
+    '2013-12-31', -- data fim calendario
+    365, -- dias letivos
+    'p', -- tipo graduacao presencial, ead, administrativo
+    true, -- aprovado
+    1, -- numero reuniao
+    '2013-01-01', -- data inicio calendario anterior
+    'a' -- tipo  calendario
+);
+
+INSERT INTO Calendario VALUES(
+    '2012-01-01', -- data inicio calendario
+    '2012-12-31', -- data fim calendario
+    365, -- dias letivos
+    'p', -- tipo graduacao presencial, ead, administrativo
+    true, -- aprovado
+    1, -- numero reuniao
+    '2012-01-01', -- data inicio calendario anterior
+    'a' -- tipo  calendario
+);
+
+INSERT INTO Calendario VALUES(
+    '2014-01-01', -- data inicio calendario
+    '2014-12-31', -- data fim calendario
+    365, -- dias letivos
+    'p', -- tipo graduacao presencial, ead, administrativo
+    true, -- aprovado
+    1, -- numero reuniao
+    '2014-01-01', -- data inicio calendario anterior
+    'b' -- tipo  calendario
+);
+
+INSERT INTO Calendario VALUES(
+    '2015-01-01', -- data inicio calendario
+    '2015-12-31', -- data fim calendario
+    365, -- dias letivos
+    'p', -- tipo graduacao presencial, ead, administrativo
+    true, -- aprovado
+    1, -- numero reuniao
+    '2014-01-01', -- data inicio calendario anterior
+    'a' -- tipo  calendario
+);
+
+------------------------------------------------------------------------------------------------
+
 ----------------------------------------------------
 ----------------------------------------------------
 -- População das Tabelas feitas por Thalles Ferreira
@@ -196,7 +254,7 @@ INSERT INTO Reuniao VALUES(
 
 -- Atividade
 INSERT INTO Atividade VALUES(
-    '2014-01-20', -- data inicio
+    '2014-01-01', -- data inicio
     '2014-01-22', -- data fim
     'c', -- tipo de atividade
     '2014-01-20', -- data inicio Calendario
@@ -204,7 +262,7 @@ INSERT INTO Atividade VALUES(
 );
 
 INSERT INTO Atividade VALUES(
-    '2014-03-01', -- data inicio
+    '2014-01-01', -- data inicio
     '2014-01-3', -- data fim
     'c', -- tipo de atividade
     '2014-01-20', -- data inicio Calendario
@@ -212,7 +270,7 @@ INSERT INTO Atividade VALUES(
 );
 
 INSERT INTO Atividade VALUES(
-    '2014-04-10', -- data inicio
+   '2014-01-01', -- data inicio
     '2014-01-11', -- data fim
     'c', -- tipo de atividade
     '2014-01-20', -- data inicio Calendario
@@ -220,15 +278,15 @@ INSERT INTO Atividade VALUES(
 );
 
 INSERT INTO Atividade VALUES(
-    '2014-01-20', -- data inicio
+    '2014-01-01', -- data inicio
     '2014-01-22', -- data fim
     'd', -- tipo de atividade
     '2014-01-20', -- data inicio Calendario
-    'b' -- tipo Calendario
+    'a' -- tipo Calendario
 );
 
 INSERT INTO Atividade VALUES(
-    '2014-01-20', -- data inicio
+    '2014-01-01', -- data inicio
     '2014-01-21', -- data fim
     'd', -- tipo de atividade
     '2014-01-20', -- data inicio Calendario
