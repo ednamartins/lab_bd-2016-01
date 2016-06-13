@@ -1,5 +1,9 @@
------- População da Tabela
--- Reuniao
+------ População das Tabelas
+
+
+---------------------
+------ REUNIAO ------
+---------------------
 INSERT INTO Reuniao (numero, pauta, data_inicio)
 	VALUES (
 		1,
@@ -21,7 +25,23 @@ INSERT INTO Reuniao (numero, pauta, data_inicio)
 		'2013-10-12'
 	);
 
--- Calendario
+INSERT INTO Reuniao (numero, pauta, data_inicio)
+	VALUES (
+		4,
+		'Pauta Reuniao 4',
+		'2013-10-20'
+	);
+
+INSERT INTO Reuniao (numero, pauta, data_inicio)
+	VALUES (
+		5,
+		'Pauta Reuniao 5',
+		'2013-11-07'
+	);
+
+-----------------------
+------ CALENDARIO ------
+-----------------------
 INSERT INTO Calendario (data_inicio, dias_letivos, tipo, reuniao_numero) 
 	VALUES (
 		'2014-01-20',
@@ -69,7 +89,9 @@ INSERT INTO Calendario (data_inicio, dias_letivos, tipo, aprovado, reuniao_numer
 		2
 	);
 
--- Eventos
+---------------------
+------ EVENTOS ------
+---------------------
 INSERT INTO Evento (data_inicio, data_fim, descricao, calendario_data, calendario_tipo)
 	VALUES (
 		'2014-02-01',

@@ -390,10 +390,10 @@ CREATE TABLE Departamento
 (
   	nome character varying(50),
   	website character varying(100),
-  	sigla character varying(10) NOT NULL,
-  	telefone1 character varying(20) NOT NULL,
+  	sigla character varying(10) not null,
+  	telefone1 character varying(20) not null,
   	telefone2 character varying(20),
-  	endereco character varying (100) NOT NULL,
+  	endereco character varying (100) not null,
   	Campus_sigla character varying(10),
 
   	CONSTRAINT Departamento_pk PRIMARY KEY (sigla),
@@ -534,8 +534,8 @@ CREATE TABLE RealizaCCRe
 -- Compoe (Disciplina x Curso)
 CREATE TABLE Compoe
 (
-	Disciplina_codigo character varying(10),
-	Curso_codigo integer,
+	Disciplina_codigo character varying(10) not null,
+	Curso_codigo integer not null,
 	obrigatoriedade boolean,
 	perfil char, -- atributo descriminatório sobre perfil
 
@@ -548,7 +548,7 @@ CREATE TABLE Compoe
 CREATE TABLE Cursa
 (
 	Estudante_ra integer not null,
-	Turma_id char NOT NULL,
+	Turma_id char not null,
 	semestre integer,
 	media numeric(2,2),
 	frenquencia numeric(2,2),
@@ -562,11 +562,11 @@ CREATE TABLE Cursa
 -- Disciplina Pré-Requisito (Disciplina x Disciplina)
 CREATE TABLE DisciplinaPreReq
 (
-	Disciplina_codigo character varying(10),
+	Disciplina_codigo character varying(10) not null,
 	sigla character varying(7),
 	nro_creditos integer,
 	categoria character varying(20),
-	codigoPreRequisito character varying (10),
+	codigoPreRequisito character varying (10) not null,
 
 	CONSTRAINT Disciplina_FK foreign key (Disciplina_codigo) references Disciplina (codigo),
 	CONSTRAINT PreReq_FK foreign key (codigoPreRequisito) references Disciplina(codigo),
@@ -576,8 +576,8 @@ CREATE TABLE DisciplinaPreReq
 -- Efetua (NucleoDocente x Reuniao)
 CREATE TABLE Efetua
 (
-	NucleoDocente_codigo integer,
-	Reuniao_numero integer,
+	NucleoDocente_codigo integer not null,
+	Reuniao_numero integer not null,
 
 	CONSTRAINT Efetua_NucleoDocente_fk FOREIGN KEY (NucleoDocente_codigo) REFERENCES NucleoDocente (codigo),
 	CONSTRAINT Efetua_Reuniao_fk FOREIGN KEY (Reuniao_numero) REFERENCES Reuniao (numero),
@@ -607,8 +607,8 @@ CREATE TABLE Inscreve
 	periodo date,
 	deferimento boolean,
 	prioridade_inscricao integer,
-	Turma_id character varying(1),
-	Estudante_ra integer,
+	Turma_id char not null,
+	Estudante_ra integer not null,
 
 	CONSTRAINT Inscreve_pk PRIMARY KEY (Estudante_ra, Turma_id),
 	CONSTRAINT Inscreve_Estudante_fk FOREIGN KEY (Estudante_ra) REFERENCES Estudante (ra),
