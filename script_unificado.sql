@@ -366,12 +366,14 @@ CREATE TABLE Turma
 (
  	id char not null unique,
  	vagas integer,
+ 	ano integer,
+ 	semestre integer,
  	Disciplina_codigo character varying(10),
  	Docente_codigo integer,
 
  	CONSTRAINT Turma_Disciplina_fk foreign key (Disciplina_codigo) references Disciplina (codigo),
  	CONSTRAINT Turma_Docente_fk foreign key (Docente_codigo) references Docente (codigo),
- 	CONSTRAINT Turma_pk primary key (Disciplina_codigo, id)
+ 	CONSTRAINT Turma_pk primary key (Disciplina_codigo, id, ano, semestre)
 );
 
 -- SALA
