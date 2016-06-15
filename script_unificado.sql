@@ -104,7 +104,7 @@ CREATE TABLE ConselhoCurso
 -- CURSO
 CREATE TABLE Curso 
 (
-    codigo_Curso CHAR(10) Curso_pk primary key,
+    codigo_Curso CHAR(10) CONSTRAINT Curso_pk primary key,
     website character varying(40),
     nome character varying(40),
     coordenador coord 
@@ -123,7 +123,7 @@ CREATE TABLE Disciplina
 -- EMPRESA
 CREATE TABLE Empresa 
 (
-    cnpj bigint constraint Empresa_pk primary key,
+    cnpj bigint CONSTRAINT Empresa_pk primary key,
     nome integer,
     endereco endereco
 );
