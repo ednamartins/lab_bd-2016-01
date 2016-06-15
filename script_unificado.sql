@@ -104,7 +104,7 @@ CREATE TABLE ConselhoCurso
 -- CURSO
 CREATE TABLE Curso 
 (
-    codigo integer constraint Curso_pk primary key,
+    codigo_Curso CHAR(10) Curso_pk primary key,
     website character varying(40),
     nome character varying(40),
     coordenador coord 
@@ -113,7 +113,7 @@ CREATE TABLE Curso
 -- DISCIPLINA
 CREATE TABLE Disciplina 
 (
-	codigo character varying(10) CONSTRAINT Disciplina_PK primary key,
+	codigo_Disciplina CHAR(10) CONSTRAINT Disciplina_PK primary key,
 	sigla character varying(7),
 	nro_creditos integer,
 	vezes_Realizadas integer,
