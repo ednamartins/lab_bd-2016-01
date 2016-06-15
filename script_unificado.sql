@@ -380,10 +380,12 @@ CREATE TABLE Turma
 CREATE TABLE Sala 
 (
  	Turma_id char,
+ 	ano integer,
+ 	semestre integer,
  	Turma_Disciplina_codigo character varying(10),
  	sala character varying(20),
 
- 	CONSTRAINT sala_turma_fk foreign key (Turma_id, Turma_Disciplina_codigo) references Turma (id, Disciplina_codigo),
+ CONSTRAINT sala_turma_fk foreign key (Turma_Disciplina_codigo,Turma_id,ano,semestre ) references Turma (Disciplina_codigo, id, ano, semestre),
  	CONSTRAINT sala_pk PRIMARY KEY (Turma_id, Turma_Disciplina_codigo, sala)
 );
 
