@@ -27,6 +27,13 @@ INSERT INTO atcomp VALUES (20, 'PYLADIES');
 INSERT INTO atcomp VALUES (120, 'MARATONA');
 INSERT INTO atcomp VALUES (40, 'PETBCC');
 
+--INSERT NÃO NECESSÁRIO PARA TRABALHO FINAL!!! APENAS PARA ENTREGA INDIVIDUAL COM SEQUENCES.
+INSERT INTO atcomp VALUES (60, 'IC', nextval('id_AtComp'));
+INSERT INTO atcomp VALUES (60, 'CATIJR', nextval('id_AtComp'));
+INSERT INTO atcomp VALUES (20, 'PYLADIES', nextval('id_AtComp'));
+INSERT INTO atcomp VALUES (120, 'MARATONA', nextval('id_AtComp'));
+INSERT INTO atcomp VALUES ( 40, 'PETBCC', nextval('id_AtComp'));
+
 -- Ra estudante(FK), Nome da atividade complementar(FK),  
 INSERT INTO realizaace VALUES ('1111', 'IC');
 INSERT INTO realizaace VALUES ('2222', 'CATIJR');
