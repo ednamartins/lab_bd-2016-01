@@ -104,7 +104,7 @@ CREATE TABLE ConselhoCurso
 -- CURSO
 CREATE TABLE Curso 
 (
-    codigo_Curso CHAR(10) CONSTRAINT Curso_pk primary key,
+    codigo character varying(10) CONSTRAINT Curso_pk primary key,
     website character varying(40),
     nome character varying(40),
     coordenador coord 
@@ -113,7 +113,7 @@ CREATE TABLE Curso
 -- DISCIPLINA
 CREATE TABLE Disciplina 
 (
-	codigo_Disciplina CHAR(10) CONSTRAINT Disciplina_PK primary key,
+	codigo character varying(10) CONSTRAINT Disciplina_PK primary key,
 	sigla character varying(7),
 	nro_creditos integer,
 	vezes_Realizadas integer,
@@ -156,7 +156,7 @@ CREATE TABLE Pessoa
 CREATE TABLE NucleoDocente
 (  
 	Presidente character varying(20),
-	codigo integer not null,
+	codigo character varying(10) not null,
 
 	CONSTRAINT NucleoDocente_pk PRIMARY KEY (codigo) 
 );
@@ -248,7 +248,7 @@ CREATE TABLE Atividade
 CREATE TABLE Docente 
 (
     Pessoa_rg character varying(9) not null,
-    codigo integer not null unique,
+    codigo character varying(10) not null unique,
 
     CONSTRAINT Docente_Pessoa_FK FOREIGN KEY (Pessoa_rg) REFERENCES Pessoa(rg),
     CONSTRAINT Docente_PK PRIMARY KEY (Pessoa_rg, codigo)
@@ -294,7 +294,7 @@ CREATE TABLE Fase
 CREATE TABLE TecAdm 
 (
     Pessoa_rg character varying(9) not null,
-    codigo integer not null,
+    codigo character varying(10) not null,
 
     CONSTRAINT TecAdm_Pessoa_FK FOREIGN KEY (Pessoa_rg) REFERENCES Pessoa (rg), 
     CONSTRAINT TecAdm_PK PRIMARY KEY (Pessoa_rg, codigo)
@@ -304,7 +304,7 @@ CREATE TABLE TecAdm
 CREATE TABLE ProjetoPoliticoPedagogico 
 (
 	grade gradecurricular,
-	Curso_codigo integer,
+	Curso_codigo character varying(10),
 
 	CONSTRAINT ProjetoPoliticoPedagogico_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
 	CONSTRAINT ProjetoPoliticoPedagogico_pk PRIMARY KEY (Curso_codigo, grade)
@@ -379,7 +379,7 @@ CREATE TABLE Turma
 -- SALA
 CREATE TABLE Sala 
 (
- 	Turma_id char,
+ 	Turma_id character,
  	Turma_Disciplina_codigo character varying(10),
  	sala character varying(20),
 
