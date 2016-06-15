@@ -41,8 +41,10 @@ CREATE TABLE AtComp
 (
   creditos integer,
   nome character varying(100) NOT NULL,
-
-  CONSTRAINT AtComp_pk PRIMARY KEY (nome)
+  
+  "id_AtComp" integer NOT NULL DEFAULT nextval('"atcomp_id_AtComp_seq"'::regclass), --Inserido apenas para o Sequence
+  
+  CONSTRAINT atcomp_pk PRIMARY KEY (nome)
 );
 
 -- Relacionamento Realiza (Atividade_Complementar x Estudante)
