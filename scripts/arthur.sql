@@ -60,10 +60,10 @@ CREATE TABLE Estagia
 );
 
 
-INSERT INTO estagia VALUES(“10/05/2016”, “10/11/2016”, 06562165849, ROW(Ronaldo, 25145885696), ROW(Ademar, 154448556225), “Carta Avaliacao”, “Termo Compromisso”);
+INSERT INTO estagia VALUES('10/05/2016', '10/11/2016', 06562165849, ROW(Ronaldo, 25145885696), ROW(Ademar, 154448556225), 'Carta Avaliacao', 'Termo Compromisso');
 
-INSERT INTO empresa VALUES(2566856, Samsung, ROW(“Rua da Pamonha”, “Sem complemento”, “Cidade Jardim”, “Jaguariúna”, “SP”, “Brasil”, 13654987));
+INSERT INTO empresa VALUES(2566856, Samsung, ROW('Rua da Pamonha', 'Sem complemento', 'Cidade Jardim', 'Jaguariúna', 'SP', 'Brasil', 13654987));
 
 INSERT INTO turma VALUES(0258, ‘{212, 235}’, 120);
 
-INSERT INTO curso VALUES(0212, “www.dc.ufscar.br”, “Ciência da Computação”, ROW(“Joao Silva”, ROW(“Sala”, “Fixo”, 05, 16, 34521443)));
+INSERT INTO curso VALUES(0212, 'www.dc.ufscar.br', 'Ciência da Computação', ROW('Joao Silva', ROW('Sala', 'Fixo', 05, 16, 34521443)));
