@@ -52,6 +52,7 @@ CREATE TYPE supervisor AS
 -- ATIVIDADE COMPLEMENTAR
 CREATE TABLE AtComp
 (
+  	id_AtComp serial not null unique, --Criado apenas para gerar um Sequence, não é necessário!
   	creditos integer,
   	nome character varying(100) NOT NULL,
 
