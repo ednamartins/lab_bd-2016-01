@@ -1,11 +1,12 @@
 DROP TABLE DisciplinaPreReq;
 
 CREATE TABLE DisciplinaPreReq(
-	Codigo CHAR(10) CONSTRAINT Disciplina_PK primary key,
-	Sigla CHAR(7),
-	Nro_creditos INT,
+	Codigo CHAR not null(10),
+	Sigla CHAR(10),
+	Nro_creditos INTEGER,
 	Categoria CHAR(20),
 	CodigoPreRequisito CHAR (10),
+	CONSTRAINT Disciplina_PK primary key (Codigo),
 	CONSTRAINT Disciplina_FK foreing key (CodigoPreRequisito) references Disciplina
 );
 
