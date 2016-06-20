@@ -114,9 +114,8 @@ CREATE TABLE Curso
 CREATE TABLE Disciplina 
 (
 	codigo character varying(10) CONSTRAINT Disciplina_PK primary key,
-	sigla character varying(7),
+	nome character varying(50),
 	nro_creditos integer,
-	vezes_Realizadas integer,
 	categoria character varying(20)	
 );
 
@@ -379,14 +378,14 @@ CREATE TABLE Turma
 -- SALA
 CREATE TABLE Sala 
 (
+	codigo character varying(20),
  	Turma_id char,
  	Turma_ano integer,
  	Turma_semestre integer,
  	Turma_Disciplina_codigo character varying(10),
- 	sala character varying(20),
 
- CONSTRAINT sala_turma_fk foreign key (Turma_Disciplina_codigo,Turma_id,ano,semestre ) references Turma (Disciplina_codigo, Turma_id, Turma_ano, Turma_semestre),
- 	CONSTRAINT sala_pk PRIMARY KEY (Turma_id, Turma_Disciplina_codigo, sala)
+ 	CONSTRAINT Sala_Turma_fk foreign key (Turma_Disciplina_codigo, Turma_id, Turma_ano, Turma_semestre ) references Turma (Disciplina_codigo, id, ano, semestre),
+ 	CONSTRAINT Sala_pk PRIMARY KEY (Turma_Disciplina_codigo, Turma_id, Turma_ano, Turma_semestre, codigo)
 );
 
 -- DEPARTAMENTO
@@ -553,10 +552,11 @@ CREATE TABLE Cursa
 (
 	Estudante_ra integer not null,
 	Turma_id char not null,
-	semestre integer,
+	Turma_ano integer not null,
+	Turma_semestre integer not null,
 	media numeric(2,2),
 	frenquencia numeric(2,2),
-	status char,
+	status char, -- "c" cancelado, "t" trancado, "r" reprovado, "a" aprovado
 
 	CONSTRAINT Cursa_Estudante_fk FOREIGN KEY (Estudante_ra) REFERENCES Estudante (ra),
 	CONSTRAINT Cursa_Turma_fk FOREIGN KEY (Turma_id) REFERENCES Turma (id),
@@ -570,11 +570,11 @@ CREATE TABLE DisciplinaPreReq
 	sigla character varying(7),
 	nro_creditos integer,
 	categoria character varying(20),
-	codigoPreRequisito character varying (10) not null,
+	PreRequisito_codigo character varying (10) not null,
 
 	CONSTRAINT Disciplina_FK foreign key (Disciplina_codigo) references Disciplina (codigo),
-	CONSTRAINT PreReq_FK foreign key (codigoPreRequisito) references Disciplina(codigo),
-	CONSTRAINT DisciplinaPreReq_pk primary key (Disciplina_codigo, codigoPreRequisito)
+	CONSTRAINT PreReq_FK foreign key (PreRequisito_codigo) references Disciplina(codigo),
+	CONSTRAINT DisciplinaPreReq_pk primary key (Disciplina_codigo, PreRequisito_codigo)
 );
 
 -- Efetua (NucleoDocente x Reuniao)
