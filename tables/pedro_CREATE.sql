@@ -16,7 +16,7 @@ CREATE TABLE Reuniao
 (
 	numero integer not null unique,
 	pauta text,
-	data_inicio date,
+	dataInicio date,
 
 	CONSTRAINT Reuniao_pk PRIMARY KEY (numero)
 );
@@ -24,47 +24,55 @@ CREATE TABLE Reuniao
 -- calendários
 CREATE TABLE Calendario 
 (
-	data_inicio date not null,
-	data_fim date,
-	dias_letivos integer not null,
+	dataInicio date not null,
+	dataFim date,
+	diasLetivos integer not null,
 	tipo char not null, -- atributo discriminatório Graduação Presencial (p), EaD (e) ou Administrativo (a)
 	aprovado boolean default false,
-	reuniao_numero integer,
-	anterior_data date,	-- data de início do calendário anterior ao referente
-	anterior_tipo char, -- tipo do calendário anterior ao referente
+	Reuniao_numero integer,
 
-	CONSTRAINT Calendario_Reuniao_fk FOREIGN KEY (reuniao_numero) REFERENCES Reuniao(numero)
+	CONSTRAINT Calendario_Reuniao_fk FOREIGN KEY (Reuniao_numero) REFERENCES Reuniao(numero)
 		ON DELETE RESTRICT,
-	CONSTRAINT Calendario_pk PRIMARY KEY (data_inicio, tipo)
+	CONSTRAINT Calendario_pk PRIMARY KEY (dataInicio, tipo)
 );
 
 -- eventos -> dependem de calendário
 CREATE TABLE Evento 
 (
-	id_evento serial not null unique,
-	data_inicio date not null,
-	data_fim date,
+	id serial not null unique,
+	dataInicio date not null,
+	dataFim date,
 	descricao text,
-	calendario_data date not null, -- data de início do calendario ao qual o evento pertence
-	calendario_tipo char, -- tipo do calendario ao qual o eento pertence
+	Calendario_data date not null, -- data de início do calendario ao qual o evento pertence
+	Calendario_tipo char, -- tipo do calendario ao qual o eento pertence
 
-	CONSTRAINT Evento_Calendario_fk FOREIGN KEY (calendario_data, calendario_tipo) REFERENCES Calendario(data_inicio, tipo)
+	CONSTRAINT Evento_Calendario_fk FOREIGN KEY (Calendario_data, Calendario_tipo) REFERENCES Calendario(dataInicio, tipo)
 		ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT Evento_pk PRIMARY KEY (calendario_data, calendario_tipo, id_evento)
+	CONSTRAINT Evento_pk PRIMARY KEY (Calendario_data, calendarioTipo, id)
 );
 
--- define o auto-relacionamento entre Calendário "anterior" e Calendário "posterior"
-ALTER TABLE Calendario ADD FOREIGN KEY (anterior_data, anterior_tipo) REFERENCES Calendario(data_inicio, tipo);
-
 -- trigger para calcular data_fim
-CREATE OR REPLACE FUNCTION calcula_data_fim_proc() RETURNS trigger
+CREATE OR REPLACE FUNCTION calcula_dataFim_proc() RETURNS trigger
 AS $$
 BEGIN 
-	NEW.data_fim = NEW.data_inicio + INTERVAL '1' DAY * NEW.dias_letivos;
+	NEW.dataFim = NEW.dataInicio + INTERVAL '1' DAY * NEW.diasLetivos;
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER calcula_data_fim_trigger BEFORE INSERT OR UPDATE
+CREATE TRIGGER calcula_dataFim_trigger BEFORE INSERT OR UPDATE
 ON Calendario FOR EACH ROW
-EXECUTE PROCEDURE calcula_data_fim_proc ();
+EXECUTE PROCEDURE calcula_dataFim_proc ();
+
+-- EhAnterior (Calendario (Anterior) x Calendario (Posterior))
+CREATE TABLE EhAnterior
+{
+	Anterior_dataInicio date not null,
+	Anterior_tipo char not null,
+	Posterior_dataInicio date not null,
+	Posterior_tipo char not null,
+
+	CONSTRAINT Calendario_Anterior_fk FOREIGN KEY (Anterior_dataInicio, Anterior_tipo) REFERENCES Calendario (dataInicio, tipo),
+	CONSTRAINT Calendario_Posterior_fk FOREIGN KEY (Posterior_dataInicio, Posterior_tipo) REFERENCES Calendario (dataInicio, tipo),
+	CONSTRAINT EhAnterior_pk PRIMARY KEY (Anterior_dataInicio, Anterior_tipo, Posterior_dataInicio, Posterior_tipo)
+};

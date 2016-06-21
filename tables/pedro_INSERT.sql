@@ -50,25 +50,21 @@ INSERT INTO Calendario (data_inicio, dias_letivos, tipo, reuniao_numero)
 		1
 	);
 
-INSERT INTO Calendario (data_inicio, dias_letivos, tipo, reuniao_numero, anterior_data, anterior_tipo) 
+INSERT INTO Calendario (data_inicio, dias_letivos, tipo, reuniao_numero, anterior_data) 
 	VALUES (
 		'2014-02-01',
 		128,
 		'p',
-		2,
-		'2014-01-20',
-		'p'
+		2
 	);
 
-INSERT INTO Calendario (data_inicio, dias_letivos, tipo, aprovado, reuniao_numero, anterior_data, anterior_tipo) 
+INSERT INTO Calendario (data_inicio, dias_letivos, tipo, aprovado, reuniao_numero) 
 	VALUES (
 		'2014-02-28',
 		100,
 		'p',
 		TRUE,
-		3,
-		'2014-02-01',
-		'p'
+		3
 	);
 
 INSERT INTO Calendario (data_inicio, dias_letivos, tipo, aprovado, reuniao_numero) 
@@ -87,6 +83,25 @@ INSERT INTO Calendario (data_inicio, dias_letivos, tipo, aprovado, reuniao_numer
 		'a',
 		TRUE,
 		2
+	);
+
+------------------------
+------ EHANTERIOR ------
+------------------------
+INSERT INTO EhAnterior (Anterior_data, Anterior_tipo, Posterior_data, Posterior_tipo)
+	VALUES (
+		'2014-02-01',
+		'p',
+		'2014-02-28',
+		'p'
+	);
+
+INSERT INTO EhAnterior (Anterior_data, Anterior_tipo, Posterior_data, Posterior_tipo)
+	VALUES (
+		'2014-01-20',
+		'p',
+		'2014-02-01',
+		'p'
 	);
 
 ---------------------
