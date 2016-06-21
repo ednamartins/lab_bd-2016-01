@@ -1,11 +1,8 @@
-create or replace procedure "TrocaIRA" (nRa in integer, novoIra in integer)
-is erro EXCEPTION;
+CREATE OR REPLACE FUNCTION TrocaIra(nRa integer, novoIra integer)
+RETURN void AS $$
 BEGIN
-UPDATE ira
-SET ira = novoIra;
-WHERE ra = nRa;
-EXCEPTION WHEN erro THEN RAISE_APPLICATION_ERROR(123, 'Formato incorreto', FALSE);
-commit;
-END TrocaIRA;
-/
-exec TrocaIRA (555555, 15000);
+    UPDATE Estudante
+    SET ira = novoIra
+    WHERE ra = nRa;
+END;
+$$ LANGUAGE plpgsql;
