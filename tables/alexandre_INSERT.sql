@@ -1,5 +1,5 @@
 -- Projeto Politico Pedagogico
 
-INSERT INTO ProjetoPoliticoPedagogico VALUES("true", "false", "false");
-INSERT INTO ProjetoPoliticoPedagogico VALUES("false", "true", "false");
-INSERT INTO ProjetoPoliticoPedagogico VALUES("false", "false", "true");
+INSERT INTO ProjetoPoliticoPedagogico VALUES (ROW("true", "false", "false"), 552054, 0212);
+INSERT INTO ProjetoPoliticoPedagogico VALUES (ROW("false", "true", "false"), 668515, 0213);
+INSERT INTO ProjetoPoliticoPedagogico VALUES (ROW("false", "false", "true"), 668515, 0213);
