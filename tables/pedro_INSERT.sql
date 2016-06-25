@@ -88,7 +88,7 @@ INSERT INTO Calendario (dataInicio, diasLetivos, tipo, aprovado, reuniao_numero)
 ------------------------
 ------ EHANTERIOR ------
 ------------------------
-INSERT INTO EhAnterior (Anterior_data, Anterior_tipo, Posterior_data, Posterior_tipo)
+INSERT INTO EhAnterior (Anterior_dataInicio, Anterior_tipo, Posterior_dataInicio, Posterior_tipo)
 	VALUES (
 		'2014-02-01',
 		'p',
@@ -96,7 +96,7 @@ INSERT INTO EhAnterior (Anterior_data, Anterior_tipo, Posterior_data, Posterior_
 		'p'
 	);
 
-INSERT INTO EhAnterior (Anterior_data, Anterior_tipo, Posterior_data, Posterior_tipo)
+INSERT INTO EhAnterior (Anterior_dataInicio, Anterior_tipo, Posterior_dataInicio, Posterior_tipo)
 	VALUES (
 		'2014-01-20',
 		'p',

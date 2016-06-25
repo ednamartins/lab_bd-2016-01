@@ -104,10 +104,12 @@ CREATE TABLE ConselhoCurso
 -- CURSO
 CREATE TABLE Curso 
 (
-    codigo integer constraint Curso_pk primary key,
+    codigo integer NOT NULL,
     website character varying(40),
     nome character varying(40),
-    coordenador coord 
+    coordenador coord,
+
+    CONSTRAINT Curso_pk PRIMARY KEY (codigo)
 );
 
 -- DISCIPLINA
@@ -287,8 +289,8 @@ CREATE TABLE Fase
 -- TÉCNICO ADMINISTRATIVO
 CREATE TABLE TecAdm 
 (
-    Pessoa_rg character varying(9) not null,
-    codigo integer not null,
+    Pessoa_rg character varying(9) NOT NULL,
+    codigo integer NOT NULL,
 
     CONSTRAINT TecAdm_Pessoa_FK FOREIGN KEY (Pessoa_rg) REFERENCES Pessoa (rg), 
     CONSTRAINT TecAdm_PK PRIMARY KEY (Pessoa_rg, codigo)
@@ -298,10 +300,12 @@ CREATE TABLE TecAdm
 CREATE TABLE ProjetoPoliticoPedagogico 
 (
 	grade gradecurricular,
-	Curso_codigo integer,
+	ConselhoCurso_id integer NOT NULL, -- Conselho de Curso que define PPP
+	Curso_codigo integer, -- Curso que possui PPP
 
+	CONSTRAINT ProjetoPoliticoPedagogico_ConselhoCurso_fk FOREIGN KEY (ConselhoCurso_id) REFERENCES ConselhoCurso (id),
 	CONSTRAINT ProjetoPoliticoPedagogico_Curso_fk FOREIGN KEY (Curso_codigo) REFERENCES Curso (codigo),
-	CONSTRAINT ProjetoPoliticoPedagogico_pk PRIMARY KEY (Curso_codigo, grade)
+	CONSTRAINT ProjetoPoliticoPedagogico_pk PRIMARY KEY (ConselhoCurso_id, grade)
 );
 
 -- POLO À DISTANCIA
@@ -429,10 +433,10 @@ CREATE TABLE Pessoa_Telefone
 -- ATA
 CREATE TABLE Ata
 ( 
-	documentos character varying(20), 
+	documentos character varying(20),
+
 	ConselhoCurso_id integer not null,
 	Reuniao_numero integer not null,
-	data_termino date default 'now()',
 	
 
 	CONSTRAINT Ata_ConselhoCurso_fk FOREIGN KEY (ConselhoCurso_id) REFERENCES ConselhoCurso (id),
