@@ -1,13 +1,5 @@
 # Grupos 1B 3B 5B
 
-## Nomenclaturas
-###### Arquivo Único:
-	[nome].sql
-
-###### Arquivos Separados:
-	[nome]_CREATE.sql
-	[nome]_INSERT.sql
-
 ## Contribuições:
 **Gabriel Martins** (gabriel.sql) <br>
 &nbsp;&nbsp;&nbsp;&nbsp; PertenceDD<br>

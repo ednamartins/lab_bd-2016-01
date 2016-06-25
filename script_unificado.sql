@@ -223,7 +223,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER calcula_dataFim_trigger BEFORE INSERT OR UPDATE
 ON Calendario FOR EACH ROW
-EXECUTE PROCEDURE calcula_data_fim_proc ();
+EXECUTE PROCEDURE calcula_dataFim_proc ();
 
 -- ATIVIDADE
 CREATE TABLE Atividade
@@ -634,7 +634,7 @@ CREATE TABLE Matriculado
 
 -- EhAnterior (Calendario (Anterior) x Calendario (Posterior))
 CREATE TABLE EhAnterior
-{
+(
 	Anterior_dataInicio date not null,
 	Anterior_tipo char not null,
 	Posterior_dataInicio date not null,
@@ -643,4 +643,4 @@ CREATE TABLE EhAnterior
 	CONSTRAINT Calendario_Anterior_fk FOREIGN KEY (Anterior_dataInicio, Anterior_tipo) REFERENCES Calendario (dataInicio, tipo),
 	CONSTRAINT Calendario_Posterior_fk FOREIGN KEY (Posterior_dataInicio, Posterior_tipo) REFERENCES Calendario (dataInicio, tipo),
 	CONSTRAINT EhAnterior_pk PRIMARY KEY (Anterior_dataInicio, Anterior_tipo, Posterior_dataInicio, Posterior_tipo)
-};
+);
