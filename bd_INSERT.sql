@@ -1,5 +1,5 @@
 -- todo: 
---		Pessoa, Enade, ProjetoPoliticoPedagogico, Pessoa_Endereco, Pessoa_Telefone, Ata,
+--		Pessoa, Enade, Pessoa_Endereco, Pessoa_Telefone, Ata,
 -- 		PossuiCCND, PertenceCCP, PossuiRCF, Inscreve
 
 
@@ -268,3 +268,8 @@ INSERT INTO matriculado VALUES (557218, 10, 'grade 1', '6', true, '6', '2013-03-
 -- EhAnterior (Calendario (Anterior) x Calendario (Posterior))
 INSERT INTO ehanterior VALUES ('2014-02-01', 'p', '2014-02-28', 'p');
 INSERT INTO ehanterior VALUES ('2014-01-20', 'p', '2014-02-01',	'p');
+
+-- Projeto Politico Pedagogico
+INSERT INTO ProjetoPoliticoPedagogico VALUES("true", "false", "false");
+INSERT INTO ProjetoPoliticoPedagogico VALUES("false", "true", "false");
+INSERT INTO ProjetoPoliticoPedagogico VALUES("false", "false", "true");
