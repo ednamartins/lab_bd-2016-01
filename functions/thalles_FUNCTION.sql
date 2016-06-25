@@ -1,4 +1,4 @@
-create or replace function nroCreditosAprovados (ra_estudante in integer, status_materia in char)
+create or replace function mostraNroCreditos (ra_estudante in integer, status_materia in char)
 return number
 is
 		nroCreditos number;
@@ -15,7 +15,7 @@ begin
 	OPEN c1;
 	FETCH c1 INTO nroCreditos;
 return nroCreditos;
-end nroCreditosAprovados;
+end mostraNroCreditos;
 
 
 /*  Tabelas ligadas
